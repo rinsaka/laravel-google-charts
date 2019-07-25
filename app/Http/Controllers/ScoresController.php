@@ -10,6 +10,7 @@ class ScoresController extends Controller
   public function index()
   {
     $scores = Score::get();
-    dd($scores);
+    return view('scores.index')
+            ->with('scores', $scores);
   }
 }
