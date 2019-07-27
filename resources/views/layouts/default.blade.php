@@ -17,16 +17,22 @@
       // instantiates the pie chart, passes in the data and
       // draws it.
       function drawChart() {
-
+        // Laravel からカンマ区切り文字列データを受け取る
+        var jsScores = '<?php echo $csvScores; ?>';
+        var jsCreated_at = '<?php echo $csvCreated_at; ?>';
+        var jsHead = '<?php echo $head; ?>';
+        // カンマ区切りの文字列を配列に格納
+        var head = jsHead.split(',');
+        var scores = jsScores.split(',').map( str => parseInt(str,10) );
+        var created_ats = jsCreated_at.split(',');
+        var i;
+        // データを作る
+        var mydata = [head];
+        for (i=0; i<scores.length; i++) {
+          mydata.push([created_ats[i], scores[i]]);
+        }
         // Create the data table.
-        var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses'],
-          ['2004',  1000,      400],
-          ['2005',  1170,      460],
-          ['2006',  660,       1120],
-          ['2007',  1030,      540]
-        ]);
-
+        var data = google.visualization.arrayToDataTable(mydata);
         // Set chart options
         var options = {
           title: 'Company Performance',
