@@ -12,6 +12,16 @@
 このプロジェクトは Laravel 5.7 で Google Charts を使ってグラフを表示するサンプルです．
 - [Google Charts](https://developers.google.com/chart/)
 
+~~~
+$ cp .env.example .env
+$ touch database/database.sqlite
+$ php ../composer.phar install
+$ php artisan key:generate
+$ php artisan migrate
+$ php artisan db:seed
+$ php artisan serve --host=xxx.xxx.xxx.xxx --port 8000
+~~~
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
